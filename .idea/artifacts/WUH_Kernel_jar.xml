@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="WUH_Kernel:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/WUH_Kernel_jar</output-path>
+    <root id="archive" name="WUH_Kernel.jar">
+      <element id="module-output" name="WUH_Kernel" />
+    </root>
+  </artifact>
+</component>

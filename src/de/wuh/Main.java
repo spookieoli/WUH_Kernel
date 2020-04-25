@@ -1,8 +1,11 @@
 package de.wuh;
 
+import de.wuh.frames.MainWindow;
+import de.wuh.listener.HardwareListener;
+
 public class Main {
     // Main Startingpoint of the Kernel
     public static void main(String[] args) {
-        System.out.println("Started WUH_KERNEL!");
+        MainWindow w = new MainWindow("Test", new HardwareListener());
     }
 }
