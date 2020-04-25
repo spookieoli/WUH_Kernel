@@ -16,4 +16,10 @@ public class DLabel extends JLabel {
         Graphics2D g2 = (Graphics2D) graphics;
         g2.drawImage(this.im, 0, 0, this.getWidth(), this.getHeight(),this);
     }
+
+    // Repaint if New Image is Provided - MUST be Thread Save
+    public synchronized void repaint(Image im){
+        this.im = im;
+        super.repaint();
+    }
 }

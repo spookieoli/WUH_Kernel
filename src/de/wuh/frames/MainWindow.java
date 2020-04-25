@@ -1,6 +1,7 @@
 package de.wuh.frames;
 
 import de.wuh.listener.Listener;
+import de.wuh.listener.TimeListener;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -16,8 +17,9 @@ public class MainWindow extends JFrame {
     // private Vars
     private Listener listener;
     private DLabel label;
+    private TimeListener timeListener;
 
-    public MainWindow(String Title, Listener listener){
+    public MainWindow(String Title){
         // Call Superclas Contrsuctor
         super(Title);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -26,7 +28,7 @@ public class MainWindow extends JFrame {
         this.listener = listener;
 
         try{
-            this.label = new DLabel(ImageIO.read(new File("picture1.png")), this.getWidth(), this.getHeight());
+            this.label = new DLabel(ImageIO.read(new File("pics/Bild1.png")), this.getWidth(), this.getHeight());
             this.add(label);
         }catch(Exception e){
             e.getStackTrace();
@@ -55,5 +57,9 @@ public class MainWindow extends JFrame {
                 }
             }
         });
+
+        //Time pulse for the Steps
+        this.timeListener = new TimeListener(this.label);
+        this.timeListener.start();
     }
 }
