@@ -1,7 +1,7 @@
 package de.wuh.frames;
 
 import de.wuh.listener.Listener;
-import de.wuh.listener.TimeListener;
+import de.wuh.listener.PyProcessListener;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -10,14 +10,13 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 
 
 public class MainWindow extends JFrame {
     // private Vars
     private Listener listener;
     private DLabel label;
-    private TimeListener timeListener;
+    private PyProcessListener pyprocessListener;
 
     public MainWindow(String Title){
         // Call Superclas Contrsuctor
@@ -27,8 +26,9 @@ public class MainWindow extends JFrame {
         // Get listener Var
         this.listener = listener;
 
+        // Set Logo!
         try{
-            this.label = new DLabel(ImageIO.read(new File("pics/Bild1.png")), this.getWidth(), this.getHeight());
+            this.label = new DLabel(ImageIO.read(new File("pics/Logo.png")), this.getWidth(), this.getHeight());
             this.add(label);
         }catch(Exception e){
             e.getStackTrace();
@@ -58,8 +58,9 @@ public class MainWindow extends JFrame {
             }
         });
 
-        //Time pulse for the Steps
-        this.timeListener = new TimeListener(this.label);
-        this.timeListener.start();
+        // TODO: Sensor gives initinal Signal must be Thread!
+        // Get the Predictions from Python and show the Washing Slides
+        this.pyprocessListener = new PyProcessListener(this.label);
+        this.pyprocessListener.start();
     }
 }
