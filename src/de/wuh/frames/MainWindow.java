@@ -1,8 +1,6 @@
 package de.wuh.frames;
 
-import de.wuh.listener.Listener;
 import de.wuh.listener.PyProcessListener;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +12,6 @@ import java.io.File;
 
 public class MainWindow extends JFrame {
     // private Vars
-    private Listener listener;
     private DLabel label;
     private PyProcessListener pyprocessListener;
 
@@ -22,9 +19,6 @@ public class MainWindow extends JFrame {
         // Call Superclas Contrsuctor
         super(Title);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        // Get listener Var
-        this.listener = listener;
 
         // Set Logo!
         try{
@@ -35,8 +29,10 @@ public class MainWindow extends JFrame {
         }
 
         // Set to full Screen
-        this.setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);;
+        GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice device = graphics.getDefaultScreenDevice();
         this.setUndecorated(true);
+        device.setFullScreenWindow(this);
 
         // Transparent 16 x 16 pixel cursor image. So this doesnt disturb Customer
         BufferedImage cursorImg = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
@@ -47,7 +43,7 @@ public class MainWindow extends JFrame {
 
         // Set the blank cursor to the JFrame.
         this.getContentPane().setCursor(blankCursor);
-        this.setVisible(true);
+        //this.setVisible(true);
 
         // Keylistener - to end the Programm
         this.addKeyListener(new KeyAdapter() {
@@ -58,7 +54,7 @@ public class MainWindow extends JFrame {
             }
         });
 
-        // TODO: Sensor gives initinal Signal must be Thread!
+        // TODO: Sensor gives initial Signal must be Thread!
         // Get the Predictions from Python and show the Washing Slides
         this.pyprocessListener = new PyProcessListener(this.label);
         this.pyprocessListener.start();

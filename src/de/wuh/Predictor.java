@@ -31,7 +31,6 @@ public class Predictor {
             process = this.pb.command("python3", "py/predictor.py",  ""+ this.returnCode +"").start();
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             line = reader.readLine();
-            System.out.println("Step: " + line);
             process.waitFor();
         }catch(IOException e){
             e.getStackTrace();

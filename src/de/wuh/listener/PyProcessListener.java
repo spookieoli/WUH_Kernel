@@ -87,7 +87,6 @@ public class PyProcessListener extends Thread  {
             }
         }
         label.repaint(this.logo);
-        // Todo: Go to the Standard Picture
         // Todo: Monitor off - NOT POSSIBLE ON TRAINING MACHINE -
     }
 }
