@@ -1,5 +1,6 @@
 package de.wuh.frames;
 
+// Imports
 import de.wuh.listener.PyProcessListener;
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -8,7 +9,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
-
 
 public class MainWindow extends JFrame {
     // private Vars
@@ -54,9 +54,18 @@ public class MainWindow extends JFrame {
             }
         });
 
-        // TODO: Sensor gives initial Signal must be Thread!
+        // TODO: Sensor gives initial Signal (must be Thread!)
         // Get the Predictions from Python and show the Washing Slides
         this.pyprocessListener = new PyProcessListener(this.label);
         this.pyprocessListener.start();
+    }
+
+    // Getter / Setter
+    public DLabel getLabel() {
+        return label;
+    }
+
+    public void setLabel(DLabel label) {
+        this.label = label;
     }
 }

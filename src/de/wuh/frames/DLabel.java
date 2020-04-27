@@ -1,10 +1,13 @@
 package de.wuh.frames;
 
+// Imports
 import javax.swing.*;
 import java.awt.*;
 
 public class DLabel extends JLabel {
     private Image im;
+
+    // Constructor
     public DLabel(Image im, int w, int h){
         this.im = im;
         this.setPreferredSize(new Dimension(w, h));

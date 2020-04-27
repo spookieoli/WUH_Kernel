@@ -1,4 +1,6 @@
 package de.wuh;
+
+// Imports
 import de.wuh.frames.MainWindow;
 
 public class Main {

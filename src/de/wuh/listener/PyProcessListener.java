@@ -1,8 +1,8 @@
 package de.wuh.listener;
 
+// Imports
 import de.wuh.Predictor;
 import de.wuh.frames.DLabel;
-
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.File;
@@ -54,7 +54,6 @@ public class PyProcessListener extends Thread  {
         }
     }
 
-    // TODO: im TIRED!!!! REFACTOR!!!!
     @Override
     public void run() {
         super.run();
@@ -86,7 +85,9 @@ public class PyProcessListener extends Thread  {
                 label.repaint(this.images[this.step]); // <-- Render OLD Step!
             }
         }
+        // Gehe zurück zum Logo
         label.repaint(this.logo);
         // Todo: Monitor off - NOT POSSIBLE ON TRAINING MACHINE -
+        // This is the End of the Thread
     }
 }
