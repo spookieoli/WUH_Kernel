@@ -1,4 +1,10 @@
-package de.wuh;
+package de.wuh.proof;
+
+// DEPRECATED - FOR ARCHIVE ONLY!!!!
+// DEPRECATED - FOR ARCHIVE ONLY!!!!
+// DEPRECATED - FOR ARCHIVE ONLY!!!!
+// DEPRECATED - FOR ARCHIVE ONLY!!!!
+// DEPRECATED - FOR ARCHIVE ONLY!!!!
 
 // Imports
 import java.io.BufferedReader;
@@ -41,3 +47,8 @@ public class Predictor {
         return line;
     }
 }
+// DEPRECATED - FOR ARCHIVE ONLY!!!!
+// DEPRECATED - FOR ARCHIVE ONLY!!!!
+// DEPRECATED - FOR ARCHIVE ONLY!!!!
+// DEPRECATED - FOR ARCHIVE ONLY!!!!
+// DEPRECATED - FOR ARCHIVE ONLY!!!!

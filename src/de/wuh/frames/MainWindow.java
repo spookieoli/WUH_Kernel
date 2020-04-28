@@ -43,7 +43,6 @@ public class MainWindow extends JFrame {
 
         // Set the blank cursor to the JFrame.
         this.getContentPane().setCursor(blankCursor);
-        //this.setVisible(true);
 
         // Keylistener - to end the Programm
         this.addKeyListener(new KeyAdapter() {
@@ -54,6 +53,8 @@ public class MainWindow extends JFrame {
             }
         });
 
+        // TODO: Show Loading Screen
+        // TODO: Starting Docker
         // TODO: Sensor gives initial Signal (must be Thread!)
         // Get the Predictions from Python and show the Washing Slides
         this.pyprocessListener = new PyProcessListener(this.label);

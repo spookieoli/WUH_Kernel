@@ -1,8 +1,9 @@
 package de.wuh.listener;
 
 // Imports
-import de.wuh.Predictor;
 import de.wuh.frames.DLabel;
+import de.wuh.net.UDP_Service;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.File;
@@ -15,11 +16,12 @@ public class PyProcessListener extends Thread  {
     private Image[] smileys;
     private Image logo;
     private int step = 0;
+    private UDP_Service service;
 
     //Constructor
     public PyProcessListener(DLabel label){
         this.label = label;
-
+        this.service = new UDP_Service(9151, 9150);
         // Get all Pictures for the steps
         loadPictures();
     }
@@ -37,6 +39,7 @@ public class PyProcessListener extends Thread  {
                 e.printStackTrace();
             }
         }
+
         // Smileys
         for (int i = 0; i < 2; i++){
             try{
@@ -62,7 +65,7 @@ public class PyProcessListener extends Thread  {
         while(this.step <= 9) {
             // Check ok?
 
-            if (new Predictor(this.step).getReturn().equals(String.valueOf(this.step))) {
+            if (service.sendReceive(this.step).charAt(0) == (String.valueOf(this.step).charAt(0))) {
                 label.repaint(this.smileys[1]); // Happy Smiley if alright!
                 this.step++; // Prepare next Step!
 
@@ -85,7 +88,7 @@ public class PyProcessListener extends Thread  {
                 label.repaint(this.images[this.step]); // <-- Render OLD Step!
             }
         }
-        // Gehe zurück zum Logo
+        // Go back to the Logo Screen
         label.repaint(this.logo);
         // Todo: Monitor off - NOT POSSIBLE ON TRAINING MACHINE -
         // This is the End of the Thread
