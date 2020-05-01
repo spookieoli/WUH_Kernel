@@ -1,6 +1,7 @@
 package de.wuh.frames;
 
 // Imports
+import de.wuh.ProcessStarter.ProcessStarter;
 import de.wuh.listener.PyProcessListener;
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -54,7 +55,8 @@ public class MainWindow extends JFrame {
         });
 
         // TODO: Sensor gives initial Signal (must be Thread!)
-
+        ProcessStarter starter = new ProcessStarter();
+        starter.waitFor();
         // Get the Predictions from Python and show the Washing Slides
         this.pyprocessListener = new PyProcessListener(this.label);
         this.pyprocessListener.start();
