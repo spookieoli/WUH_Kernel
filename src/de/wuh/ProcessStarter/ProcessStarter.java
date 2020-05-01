@@ -23,7 +23,6 @@ public class ProcessStarter {
             // When there is something in the pipe go on
             reader.readLine();
             reader.close();
-            this.process.destroy();
         } catch (IOException | InterruptedException ioException) {
             ioException.printStackTrace();
         }
