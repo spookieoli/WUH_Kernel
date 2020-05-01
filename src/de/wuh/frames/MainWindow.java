@@ -53,12 +53,12 @@ public class MainWindow extends JFrame {
             }
         });
 
-        // TODO: Show Loading Screen
-        // TODO: Starting Docker
         // TODO: Sensor gives initial Signal (must be Thread!)
+
         // Get the Predictions from Python and show the Washing Slides
         this.pyprocessListener = new PyProcessListener(this.label);
         this.pyprocessListener.start();
+
     }
 
     // Getter / Setter

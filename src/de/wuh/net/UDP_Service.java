@@ -39,7 +39,6 @@ public class UDP_Service {
         try {
             String str = String.valueOf(step);
             socket.send(new DatagramPacket(str.getBytes(), str.getBytes().length, adress, this.foreignport));
-            System.out.println("Asking Python for Step: " + str);
         } catch (IOException ioException) {
             ioException.printStackTrace();
             return "-1";
@@ -47,12 +46,10 @@ public class UDP_Service {
 
         // OK - get Signal back!
         try {
-            System.out.println("Waiting for answer!?");
             DatagramPacket dg = new DatagramPacket(received, received.length);
             socket.receive(dg);
             try{
                 returnValue = new String(dg.getData());
-                System.out.println("Answer Received: " + returnValue);
             }catch (NumberFormatException e){
                 e.getStackTrace();
                 return "-1";
@@ -63,7 +60,6 @@ public class UDP_Service {
         }
         return returnValue;
     }
-
     // Schliesse Socket sauber
     public void close(){
         this.socket.close();
