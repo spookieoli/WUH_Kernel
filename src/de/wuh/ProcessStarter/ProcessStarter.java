@@ -14,15 +14,15 @@ public class ProcessStarter {
 
     // Check for Python already running
     private boolean checkPyRunning(){
-        boolean returnValue = false;
+        boolean returnValue = true;
         try {
             this.process2 = this.pb2.start();
             BufferedReader reader = new BufferedReader(new InputStreamReader(this.process2.getInputStream()));
             try{
                 Integer.parseInt(reader.readLine());
-                returnValue = true; // TRUE if Process returns PID
+                returnValue = false; // FALSE if Process returns PID
             }catch(NumberFormatException e){
-                returnValue = false;
+                returnValue = true;
             }finally {
                 reader.close();
             }
